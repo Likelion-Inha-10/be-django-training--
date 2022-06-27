@@ -1,0 +1,30 @@
+<html>
+    <head>
+        {% if user.is_authenticated %}
+            {{user.username}}님 안녕하세요
+            <a href = '{% url "logout" %}'>로그아웃</a>
+        {% else %}
+            <a href = '{% url "login" %}' >로그인</a>
+            <a href = '{% url "signup" %}' >회원가입</a>
+        {% endif %}
+    </head>
+    <body>
+        {% for post in board_list %}
+        <div>
+            {{post.title}}
+        </div>
+        <div>
+            {{post.author}}
+        </div>
+        <div>
+            {{post.content}}
+        </div>
+        <div>
+            {{post.published_date|date:'Y-m-d'}}
+        </div>
+        {% endfor %}
+        <div>
+            <a href="{% url 'board:addPost' %}" class="btn btn-primary">작성</a>
+        </div>
+    </body>
+</html>

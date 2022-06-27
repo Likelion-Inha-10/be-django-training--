@@ -1,0 +1,6 @@
+<h3>게시글 작성</h3>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input class="btn btn-primary" type="submit" value="글 등록">
+</form>
